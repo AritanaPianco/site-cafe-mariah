@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+body{
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+#menuMobile{
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease-in-out;  
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu-btn:checked ~ #menuMobile{
+    height: 300px;
+
+} 
+
+.circle{
+   clip-path: circle(50% at 100% 50%);
+   z-index: -1; 
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.icon{
+   color:#604633;
 }
 
-.App-link {
-  color: #61dafb;
+.mug {
+  filter: drop-shadow(0px 7px 2px #604633);
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mug{
+  animation: move 2s ease infinite both;
+  animation-direction: alternate;
+  
+}
+
+@keyframes move {
+     0%{
+          transform: rotateX(0);    
+     }
+     100%{
+        transform: rotateX(140deg);
+     }   
+}
+
+.link{
+  transition: all .3s ease;
+}
+
+.link:hover{
+   transform: scale(120%,120%);
+}
+
+
+.link:hover::after{
+   width: 100%;
+
+}
+
+.wrapper-slider{
+  height: 100%;
+
+}
+
+
+.linkMenu{
+  position: relative;
+  padding: 2px 0;
+}
+
+.linkMenu::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #604633;
+  transition: all .6s linear;
+}
+
+.linkMenu:hover::after, .linkMenu:focus::after{
+     width: 100%;  
+}
+
+.menuDown,
+.menuUp{
+  transition: all 2s ease;
+}
+
+
+.father .menuUp:hover + .menuDown{
+    filter: blur(5px);         
+}
+
+
+.menuDown:hover ~ .menuUp{
+   filter: blur(5px);
+  
 }
